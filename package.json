@@ -2,6 +2,7 @@
   "name": "foodzone-api-client",
   "description": "TypeScript API Client for FoodZone",
   "version": "1.0.0",
+  "private": true,
   "main": "lib/index.js",
   "repository": {
     "type": "git",
@@ -18,5 +19,8 @@
   },
   "devDependencies": {
     "typescript": "^4.7.4"
+  },
+  "dependencies": {
+    "cross-fetch": "^3.1.5"
   }
 }
