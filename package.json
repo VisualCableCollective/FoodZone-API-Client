@@ -1,0 +1,22 @@
+{
+  "name": "foodzone-api-client",
+  "description": "TypeScript API Client for FoodZone",
+  "version": "1.0.0",
+  "main": "lib/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VisualCableCollective/FoodZone-API-Client.git"
+  },
+  "keywords": [],
+  "author": "Joschua Haß",
+  "bugs": {
+    "url": "https://github.com/VisualCableCollective/FoodZone-API-Client/issues"
+  },
+  "homepage": "https://github.com/VisualCableCollective/FoodZone-API-Client#readme",
+  "scripts": {
+    "build": "npx tsc"
+  },
+  "devDependencies": {
+    "typescript": "^4.7.4"
+  }
+}
