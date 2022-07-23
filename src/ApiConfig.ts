@@ -8,7 +8,6 @@ export class ApiConfig {
 
     constructor() {
         this.setEnvironment("production");
-
     }
 
     /**

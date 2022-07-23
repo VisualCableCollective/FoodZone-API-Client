@@ -1,15 +1,20 @@
 import { ApiConfig } from "./ApiConfig";
+import { GetLocationsByAddressResponse } from "./models/responses/GetLocations/GetLocationsByAddressResponse";
 import { GetLocationsByAddress } from "./routes/GetLocationsByAddress";
 
 class FoodZoneApiClient {
     Config = new ApiConfig();
 
-    async getLocationsByAddress(address: string) {
+     getLocationsByAddress(address: string) {
         var route = new GetLocationsByAddress();
-        return await route.getData(address);
+        return route.getData(address);
     }
 }
 
 export const FoodZone = new FoodZoneApiClient();
 
 export const useFoodZone = () => FoodZone;
+
+export {
+    GetLocationsByAddressResponse
+}
