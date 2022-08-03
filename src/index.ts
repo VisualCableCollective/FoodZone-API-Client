@@ -1,5 +1,7 @@
 import { ApiConfig } from "./ApiConfig";
 import { GetLocationsByAddressResponse } from "./models/responses/GetLocations/GetLocationsByAddressResponse";
+import { Location } from "./models/responses/GetLocations/Models/Location";
+import { Seller } from "./models/responses/GetLocations/Models/Seller";
 import { GetLocationsByAddress } from "./routes/GetLocationsByAddress";
 
 class FoodZoneApiClient {
@@ -16,5 +18,7 @@ export const FoodZone = new FoodZoneApiClient();
 export const useFoodZone = () => FoodZone;
 
 export {
-    GetLocationsByAddressResponse
+    GetLocationsByAddressResponse,
+    Location,
+    Seller
 }
