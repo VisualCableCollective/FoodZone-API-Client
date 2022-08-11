@@ -1,3 +1,4 @@
+import axios from "axios";
 import { FoodZone } from "..";
 
 interface LooseObject {
@@ -12,43 +13,40 @@ export abstract class IRoute<ReturnType> {
 
     abstract method: string;
 
+    protected useApiServer = true;
+
     defaultHeaders = [
         {name: "Accept", value: "application/json"}
     ];
 
-    protected requestParams: Array<{name: string, value: string}> = [];
+    protected requestParams: Record<string, any> = {};
 
-    protected requestHeaders = new Headers();
+    protected requestHeaders: Record<string, string | number | boolean> = {};
 
     constructor() {
         this.defaultHeaders.forEach(header => {
-            this.requestHeaders.set(header.name, header.value);
+            this.requestHeaders[header.name] = header.value;
         });
     }
 
     async fetchData() {
-        let url = FoodZone.Config.ApiServerUrl + this.path;
-        let requestBody: string | null = null;
+        let url = (this.useApiServer ? FoodZone.Config.ApiServerUrl : FoodZone.Config.ServerUrl) 
+                    + this.path;
 
         if (this.method == "GET") {
             url += "?";
-            this.requestParams.forEach(param => {
+            /*this.requestParams.forEach(param => {
                 url += param.name + "=" + param.value + "&";
-            });
+            });*/
             url.slice(0, -1)
         }
-        else if (this.method == "POST") {
-            let newRequestBody: LooseObject = {};
-            this.requestParams.forEach(param => {
-                newRequestBody[param.name] = param.value;
-            });
-            requestBody = JSON.stringify(newRequestBody);
-        }
 
-        var response = await fetch(url, {
+        var response = await axios({
+            url,
             method: this.method,
             headers: this.requestHeaders,
-            body: requestBody
+            data: this.requestParams,
+            withCredentials: true // for CSRF cookie
         });
 
         return response;

@@ -8,10 +8,10 @@ export class GetLocationsByAddress extends IRoute<GetLocationsByAddressResponse>
     method = "GET";
 
     async getData(address: string) {
-        this.requestParams.push({name: "address", value: address});
+        this.requestParams["address"] = address;
 
         const data = await this.fetchData();
-        const json = await data.json();
+        const json = await data.data;
 
         let returnObj = new GetLocationsByAddressResponse();
         returnObj.sellers = json.sellers as Seller[];
