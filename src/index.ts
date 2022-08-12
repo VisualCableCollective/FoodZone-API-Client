@@ -17,7 +17,7 @@ class FoodZoneApiClient {
 
     init() {
         let csrfRoute = new SetCsrfCookie();
-        csrfRoute.getData();
+        return csrfRoute.getData();
     }
 
     getLocationsByAddress(address: string) {

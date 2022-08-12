@@ -1,7 +1,7 @@
 {
   "name": "foodzone-api-client",
   "description": "TypeScript API Client for FoodZone",
-  "version": "1.0.30",
+  "version": "1.0.31",
   "private": true,
   "main": "lib/index.js",
   "repository": {
