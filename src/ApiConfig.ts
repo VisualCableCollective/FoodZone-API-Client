@@ -6,6 +6,7 @@ export class ApiConfig {
     prodUrl = "https://api.foodzone.eu/v1/";
     ApiServerUrl = "";
     ServerUrl = "";
+    AuthorizationToken: string | null = null;
 
     constructor() {
         this.setEnvironment("production");
