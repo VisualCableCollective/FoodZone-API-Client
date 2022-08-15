@@ -1,5 +1,6 @@
 import { ApiConfig } from "./ApiConfig";
 import { FoodZoneOptions } from "./models/FoodZoneOptions";
+import { ProductCategory } from "./models/ProductCategory";
 import { AuthResponse } from "./models/responses/Auth/AuthResponse";
 import { CreateResponseBase } from "./models/responses/CreateResponseBase";
 import { GetLocationsByAddressResponse } from "./models/responses/GetLocations/GetLocationsByAddressResponse";
@@ -8,6 +9,7 @@ import { Seller } from "./models/responses/GetLocations/Models/Seller";
 import { GetProductCategoriesResponse } from "./models/responses/GetProductCategoriesResponse";
 import { ActAsUser } from "./routes/ActAsUser";
 import { CreateProductCategory } from "./routes/CreateProductCategory";
+import { DeleteProductCategory } from "./routes/DeleteProductCategory";
 import { GetLocationsByAddress } from "./routes/GetLocationsByAddress";
 import { GetProductCategories } from "./routes/GetProductCategories";
 import { SetCsrfCookie } from "./routes/SetCsrfCookie";
@@ -35,9 +37,14 @@ class FoodZoneApiClient {
         return route.getData(userId);
     }
 
-    getCategories() {
+    getProductCategories() {
         let route = new GetProductCategories();
         return route.getData();
+    }
+
+    deleteProductCategory(id: string) {
+        let route = new DeleteProductCategory();
+        return route.getData(id);
     }
 }
 
@@ -52,5 +59,6 @@ export {
     Location,
     Seller,
     FoodZoneOptions,
-    GetProductCategoriesResponse
+    GetProductCategoriesResponse,
+    ProductCategory
 }
